@@ -1,7 +1,7 @@
 #<a name="top"></a> simple-docker-hosting on FIWARE cloud
 * [Introduction](#introduction)
 * [Description](#description)
-* [Install and Administration](#install-and-ddministration)
+* [Install and Administration](#install-and-administration)
 * [Running](#running)
 * [API Overview](#api-overview)
 
