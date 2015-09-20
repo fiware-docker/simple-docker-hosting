@@ -1,7 +1,7 @@
 #<a name="top"></a> simple-docker-hosting on FIWARE cloud
 * [Introduction](#introduction)
 * [Description](#description)
-* [Install and Administration](#install-and-admin)
+* [Install and Administration](#install-and-ddministration)
 * [Running](#running)
 * [API Overview](#api-overview)
 
@@ -35,7 +35,7 @@ For a cloud hosting provider, the following capabilities are provided:
 
 ## Install and Administration
 
-Build and Install documentation for Docker on the FIWARE Cloud can be found at [the corresponding section of the Admin Manual](doc/manuals/admin/install.md).
+Build and Install documentation for Docker on the FIWARE Cloud can be found at [the corresponding section of the Admin Manual](./doc/manuals/install.md).
 
 [Top](#top)
 
