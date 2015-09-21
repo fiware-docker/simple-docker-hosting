@@ -104,7 +104,7 @@ For example:
 >export OS_PASSWORD='secret''
 >export OS_AUTH_URL='http://cloud.lab.fi-ware.org:4730/v2.0/'
 >export OS_AUTH_STRATEGY='keystone'
-'''
+```
 
 Now you can use Docker Machine to create a docker host on FIWARE.
 The docker machine takes 7 parameters:
@@ -130,23 +130,27 @@ For instance to create the docker host called docker-host you issue this command
 ```
 
 When it finishes it says:
-`To see how to connect Docker to this machine run: docker-machine env docker-host`
-
-
+```
+To see how to connect Docker to this machine run: docker-machine env docker-host
+```
 `>docker-machine env docker-host` 
+
 supplies the information to interact remotely with docker-host with your docker client.
 
 `>eval "$(docker-machine env docker-host)"`
+
 transforms the environment so that the local docker client manages the remote fiware docker host. Once the eval command is run all docker commands acts as if they are run on the remote docker host.  
 Actually the commands are executed as docker REST apis securely transferred over the internet within the TLS envelop.
 
 For example:
 
 `>docker run hello-world` 
+
 launches hello-world on the docker-host running of FIWARE.
 
 
 `>docker run -d -P training/webapp python app-py`
+
 launches the webapp service on the docker-host running of FIWARE.
 Use docker ps to see which port the webapp is listening to and the external port to which it is paired.  Then you can interact with the service using the docker-host URL and the assigned external port.
 
@@ -170,7 +174,9 @@ orion:
 ```
 
 The yml file describes two containers mongo db and orion.  Orion listens on port 1026.  We could assign an external port to pair with 1026, but in this case we allow docker to auto define the  port.
+
 '>docker-compose up -d'
+
 brings up the orion service  and run it in the background as a daemon.
 We the use the docker-compose ps command to see the service instance and its external port.
 
