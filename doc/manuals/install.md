@@ -97,7 +97,7 @@ Prepare the environmental variables for Docker Machine by exporting the followin
 * OS_AUTH_STRATEGY is the strategy for authentication.  In this case "keystone"
 
 For example:
-'''
+```
 >export OS_REGION_NAME='Spain2'
 >export OS_TENANT_NAME='john-smith cloud'
 >export OS_USERNAME='jsmith@gmail.com''
@@ -120,33 +120,33 @@ When it completes it tells you to run the docker-machine env command to learn ho
 It tells you the TLS with be used secure the communication between the client and docker host.
 
 For instance to create the docker host called docker-host you issue this command:
-'''
+```
 >docker-machine create -d openstack 
 --openstack-flavor-id="2" 
 --openstack-image-name="Ubuntu Server 14.04.1 (x64)" 
 --openstack-net-name="node-int-net-01" 
 --openstack-floatingip-pool="public-ext-net-01" 
 --openstack-sec-groups="docker-machine-sg" docker-host
-'''
+```
 
 When it finishes it says:
-"To see how to connect Docker to this machine run: docker-machine env docker-host".
+`To see how to connect Docker to this machine run: docker-machine env docker-host`
 
 
-'>docker-machine env docker-host' 
+`>docker-machine env docker-host` 
 supplies the information to interact remotely with docker-host with your docker client.
 
-'>eval "$(docker-machine env docker-host)"'
+`>eval "$(docker-machine env docker-host)"`
 transforms the environment so that the local docker client manages the remote fiware docker host. Once the eval command is run all docker commands acts as if they are run on the remote docker host.  
 Actually the commands are executed as docker REST apis securely transferred over the internet within the TLS envelop.
 
 For example:
 
-'>docker run hello-world' 
+`>docker run hello-world` 
 launches hello-world on the docker-host running of FIWARE.
 
 
-'>docker run -d -P training/webapp python app-py'
+`>docker run -d -P training/webapp python app-py`
 launches the webapp service on the docker-host running of FIWARE.
 Use docker ps to see which port the webapp is listening to and the external port to which it is paired.  Then you can interact with the service using the docker-host URL and the assigned external port.
 
@@ -155,7 +155,7 @@ Docker compose can also be used to run multi-service applications.
 
 For instance given you can run the FIWARE context broker using this docker-compose.yml:
 
-'''
+```
 mongo:
   image: mongo:2.6
   command: --smallfiles
@@ -167,7 +167,7 @@ orion:
   ports:
     - ":1026"
   command: -dbhost mongo
-'''
+```
 
 The yml file describes two containers mongo db and orion.  Orion listens on port 1026.  We could assign an external port to pair with 1026, but in this case we allow docker to auto define the  port.
 '>docker-compose up -d'
@@ -178,7 +178,7 @@ We the use the docker-compose ps command to see the service instance and its ext
 
 We can also create swarm clusers on the FIWARE cloud.
 
-The first task is to create a token that is used to bind the different hosts on the cluster. The "docker run swarm create" command is used for the task.  It returns a token that is used to identify and bind the cluster.
+The first task is to create a token that is used to bind the different hosts on the cluster. The 'docker run swarm create` command is used for the task.  It returns a token that is used to identify and bind the cluster.
 
 Next we create the Swarm master using the same docker-machine create command that was described above and add the following flags:
 * --swarm
@@ -186,7 +186,7 @@ Next we create the Swarm master using the same docker-machine create command tha
 * --swarm-discovery  discovery requires the token as input
 
 For example:
-'''
+```
 >docker-machine create -d openstack 
 --openstack-flavor-id="2" 
 --openstack-image-name="Ubuntu Server 14.04.1 (x64)" 
@@ -195,7 +195,7 @@ For example:
 --openstack-sec-groups="docker-machine-sg" docker-host
 --swarm --swarm-master 
 --swarm-discovery token://$TOKEN Swarm-Master
-'''
+```
 
 Creates the docker host "Swarm-Master" which is a swarm master.
 
