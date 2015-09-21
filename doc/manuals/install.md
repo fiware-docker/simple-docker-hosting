@@ -175,7 +175,7 @@ orion:
 
 The yml file describes two containers mongo db and orion.  Orion listens on port 1026.  We could assign an external port to pair with 1026, but in this case we allow docker to auto define the  port.
 
-'>docker-compose up -d'
+`>docker-compose up -d`
 
 brings up the orion service  and run it in the background as a daemon.
 We the use the docker-compose ps command to see the service instance and its external port.
