@@ -70,8 +70,8 @@ But there are a few set up steps that require you to use the FIWARE 1. Cloud Por
 3. Once you have an account you must create a security group. 
   * Select Cloud->Security->Security Groups.
   * Edit Security Group open incoming ports:
-	**The required ports are 2376 and 22. The Docker Daemon Port listens on 2376.  Opening the docker daemon port allows docker clients to communicate with docker remotely. The ssh daemon listens on port 22.  Docker Machine uses ssh to provision and configure the docker host.  If necessary you can replace this port with another.
-	**Optional you can open other ports to be used by the docker containers to interact with the outside world: Ports 32768-33768 are auto allocated by docker when creating containers. Of course you open other ports.  For instance 8080 for a web service. We also have observed that the Docker Swarm Master uses 3376.
+	* The required ports are 2376 and 22. The Docker Daemon Port listens on 2376.  Opening the docker daemon port allows docker clients to communicate with docker remotely. The ssh daemon listens on port 22.  Docker Machine uses ssh to provision and configure the docker host.  If necessary you can replace this port with another.
+	* Optional you can open other ports to be used by the docker containers to interact with the outside world: Ports 32768-33768 are auto allocated by docker when creating containers. Of course you open other ports.  For instance 8080 for a web service. We also have observed that the Docker Swarm Master uses 3376.
 Through out this document we refer to the security group docker-machine-sg that we created in this step. 
 4. Next you must allocate at least one floating IP to your project. Select Cloud->Security->Float IPs->Allocate IP to Project.
 5. You also might what to take a look a the VM images that are used to when creating a docker host.  Through out this document we use the VM image "Ubuntu Server 14.04.1 (x64)".  But the "base_ubuntu_14.04" also works. The difference between the two images are that "Ubuntu Server 14.04.1 (x64)" allows for root access with ssh. "base_ubuntu_14.04" is set up for ubuntu access with sudo privaledges. 
