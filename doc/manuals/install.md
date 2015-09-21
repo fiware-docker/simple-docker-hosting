@@ -20,9 +20,7 @@ Features related to:
 *  Security
 *  and more.
 
-All of the features known as Generic Enablers or GEs for short have packaged as Docker containers.
-These FIWARE containers can be leveraged to compose your own FIWARE based services.
-You can develop and deploy your services on the FIWARE Cloud.
+All of the features known as Generic Enablers or GEs for short have packaged as Docker containers. These FIWARE containers can be leveraged to compose your own FIWARE based services. You can develop and deploy your services on the FIWARE Cloud.
 
 The FIWARE Cloud supports both VM hosting and Docker hosting.  
 So why would you want to use Docker over VMs?
@@ -88,5 +86,131 @@ Once you create one or more Docker hosts, Docker Machine supplies a number of co
  *   start, inspect, stop, and restart a host
  *   upgrade the Docker client and daemon
  *   configure a Docker client to talk to your host
-For details see the [Docker Machine home page](https://docs.docker.com/machine/) 
+For details see the [Docker Machine home page](https://docs.docker.com/machine/). 
+
+### Create Docker Host on FIWARE
+The first step in creating a docker host on the FIWARE is set up your local docker client environment.
+
+We now turn our attention to preparing the local docker client to remotely create and manage docker hosts that will run on the FIWARE cloud.
+Once you have installed docker and docker machine on your client we can get started.
+First should prepare the environmental variables for Docker Machine by exporting the following environment variables: 
+* OS_REGION_NAME specifies the region that will be used
+* OS_TENANT_NAME specifies your project name
+* OS_USERNAME is the email address that you specified when opening your FIWARE account
+* OS_PASSWORD is your fiware account password
+* OS_AUTH_URL is the FIWARE identity manager's URL
+* OS_AUTH_STRATEGY is the strategy for authentication.  In this case "keystone"
+
+For example:
+>export OS_REGION_NAME='Spain2'
+>export OS_TENANT_NAME='john-smith cloud'
+>export OS_USERNAME='jsmith@gmail.com'
+>export OS_PASSWORD='secret'
+>export OS_AUTH_URL='http://cloud.lab.fi-ware.org:4730/v2.0/'
+>export OS_AUTH_STRATEGY='keystone'
+
+Now you can use Docker Machine to create a docker host on FIWARE.
+The docker machine takes 7 parameters:
+* -d specifies the openstack driver is used to interact with the cloud provider. Of course we specify the openstack driver since FIWARE is implemented as an openstack cloud.
+* -openstack-flavor-id: The flavor id species the size of the virtual machine in which to place the docker host
+* --openstack-image-name: The image name is the name of the virtual machine image.  The image id could be used instead using the openstack-image-id flag.
+* --openstack-net-name: The network name as shown in FIWARE Cloud GUI. 
+* --openstack-floatingip-pool: floating ip-pool as shown in FIWARE Cloud GUI.  
+* --openstack-sec-groups: security group as shown in FIWARE Cloud GUI.   
+* The last parameter is the name of the docker host, in this cast docker-host.
+
+When it completes it tells you to run the docker-machine env command to learn how to interact with the docker host that was created.
+It tells you the TLS with be used secure the communication between the client and docker host.
+
+For instance to create the docker host called docker-host you issue this command:
+
+>docker-machine create -d openstack 
+--openstack-flavor-id="2" 
+--openstack-image-name="Ubuntu Server 14.04.1 (x64)" 
+--openstack-net-name="node-int-net-01" 
+--openstack-floatingip-pool="public-ext-net-01" 
+--openstack-sec-groups="docker-machine-sg" docker-host
+
+When it finishes it says:
+"To see how to connect Docker to this machine run: docker-machine env docker-host".
+
+Run
+ docker-machine env docker-host 
+supplies the information to interact remotely with docker-host with your docker client.
+
+>eval "$(docker-machine env docker-host)"
+transforms the environment so that the local docker client manages the remote fiware docker host. Once the eval command is run all docker commands acts as if they are run on the remote docker host.  
+Actually the commands are executed as docker REST apis securely transferred over the internet within the TLS envelop.
+
+For example:
+
+>docker run hello-world 
+launches hello-world on the docker-host running of FIWARE.
+
+
+>docker run -d -P training/webapp python app-py
+launches the webapp service on the docker-host running of FIWARE.
+Use docker ps to see which port the webapp is listening to and the external port to which it is paired.  Then you can interact with the service using the docker-host URL and the assigned external port.
+
+## Docker Compose
+Docker compose can also be used to run multi-service applications.
+
+For instance given you can run the FIWARE context broker using this docker-compose.yml:
+
+mongo:
+  image: mongo:2.6
+  command: --smallfiles
+
+orion:
+  image: fiware/orion
+  links:
+    - mongo
+  ports:
+    - ":1026"
+  command: -dbhost mongo
+
+The yml file describes two containers mongo db and orion.  Orion listens on port 1026.  We could assign an external port to pair with 1026, but in this case we allow docker to auto define the  port.
+We use the docker-compose up -d command to bring up the orion service  and run it in the background as a daemon.
+We the use the docker-compose ps command to see the service instance and its external port.
+
+## Docker Swarm
+
+We can also create swarm clusers on the FIWARE cloud.
+
+The first task is to create a token that is used to bind the different hosts on the cluster. The "docker run swarm create" command is used for the task.  It returns a token that is used to identify and bind the cluster.
+
+Next we create the Swarm master using the same docker-machine create command that was described above and add the following flags:
+* --swarm
+* --swarm-master
+* --swarm-discovery  discovery requires the token as input
+
+For example:
+>docker-machine create -d openstack 
+--openstack-flavor-id="2" 
+--openstack-image-name="Ubuntu Server 14.04.1 (x64)" 
+--openstack-net-name="node-int-net-01" 
+--openstack-floatingip-pool="public-ext-net-01" 
+--openstack-sec-groups="docker-machine-sg" docker-host
+--swarm --swarm-master 
+--swarm-discovery token://$TOKEN Swarm-Master
+
+Creates the docker host "Swarm-Master" which is a swarm master.
+
+To create a swarm slave do not include the --swarm-master flag.
+
+The docker-machine ls command will indicate which host is a master
+and which host is a slave.
+
+
+
+ 
+
+ 
+
+
+
+  
+
+
+
 
