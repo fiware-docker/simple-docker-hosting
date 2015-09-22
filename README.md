@@ -41,7 +41,7 @@ Build and Install documentation for Docker on the FIWARE Cloud can be found at [
 
 ## Running
 
-How to run Docker on the FIWARE Cloud can be found at [the user guide](doc/manuals/admin/userguide.md).
+How to run Docker on the FIWARE Cloud can be found at [the user guide](doc/manuals/userguide.md).
 
 [Top](#top)
 

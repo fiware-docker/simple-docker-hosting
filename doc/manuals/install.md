@@ -22,12 +22,7 @@ Features related to:
 
 All of the features known as Generic Enablers or GEs for short have packaged as Docker containers. These FIWARE containers can be leveraged to compose your own FIWARE based services. You can develop and deploy your services on the FIWARE Cloud.
 
-The FIWARE Cloud supports both VM hosting and Docker hosting.  
-So why would you want to use Docker over VMs?
-Docker containers are much smaller than VMs.  They take up a fraction of the space.
-Most organization could fit all of their required containers on a single Docker host.
-In the world dominated by VMs, modular design would call for one component per VM.
-With Docker you can pack the same components referred as Docker micro-services on a single Docker host.
+The FIWARE Cloud supports both VM hosting and Docker hosting. So why would you want to use Docker over VMs? Docker containers are much smaller than VMs.  They take up a fraction of the space. Most organization could fit all of their required containers on a single Docker host. In the world dominated by VMs, modular design would call for one component per VM. With Docker you can pack the same components referred as Docker micro-services on a single Docker host.
 It is much easier to manage a single Docker host than multiple VMs.
 The start-up time for each micro-service is much faster than what would be required for a VM.
 Likewise, integrating the micro-services into a single application is much easier.
@@ -64,7 +59,7 @@ But there are a few set up steps that require you to use the FIWARE:
 	* Optional you can open other ports to be used by the docker containers to interact with the outside world: Ports 32768-33768 are auto allocated by docker when creating containers. Of course you open other ports.  For instance 8080 for a web service. We also have observed that the Docker Swarm Master uses 3376.
 Through out this document we refer to the security group docker-machine-sg that we created in this step. 
 4. Next you must allocate at least one floating IP to your project.   
-* Select Cloud->Security->Float IPs->Allocate IP to Project.
+* Select Cloud->Security->Floating IPs->Allocate IP to Project.
 5. You also might what to take a look a the VM images that are used to when creating a docker host.  Through out this document we use the VM image "Ubuntu Server 14.04.1 (x64)".  But the "base_ubuntu_14.04" also works. The difference between the two images are that "Ubuntu Server 14.04.1 (x64)" allows for root access with ssh. "base_ubuntu_14.04" is set up for ubuntu access with sudo privaledges. 
 6. Next you must [install docker](https://docs.docker.com/linux/step_one/) and [docker machine](https://docs.docker.com/machine/install-machine/) on your local work station. We will use docker machine to create docker hosts and swarm clusters on FIWARE regions.
 
