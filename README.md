@@ -10,9 +10,7 @@
 
 This is the code repository describes how FIWARE developers can create and deploy their services on the FIWARE Cloud also known as the FIWARE Lab.
 
-This project is part of [FIWARE](http://www.fiware.org). Check also the [FIWARE Catalogue entry for Docker](http://catalogue.fiware.org/enablers/Docker)
-
-You can find the User & Programmer's Manual and the Administration Guide on [readthedocs.org](https://docker.readthedocs.org)
+This project is part of [FIWARE](http://www.fiware.org). Check also the [FIWARE Catalogue entry for Docker](http://catalogue.fiware.org/enablers/Docker).
 
 [Top](#top)
 
@@ -35,13 +33,14 @@ For a cloud hosting provider, the following capabilities are provided:
 
 ## Install and Administration
 
-Build and Install documentation for Docker on the FIWARE Cloud can be found at [the installation and administation manual](./doc/manuals/install.md).
+Build and Install documentation for Docker on the FIWARE Cloud can be found at [the installation and administation manual](./doc/manuals/install.md). You can also find it on [readthedocs](http://simple-docker-hosting-on-fiware-cloud.readthedocs.org/en/latest/manuals/install/)
 
 [Top](#top)
 
 ## Running
 
-How to run Docker on the FIWARE Cloud can be found at [the user guide](doc/manuals/userguide.md).
+How to run Docker on the FIWARE Cloud can be found at [the user guide](doc/manuals/userguide.md). You can also find it on [readthedocs](http://simple-docker-hosting-on-fiware-cloud.readthedocs.org/en/latest/manuals/userdoc/)
+
 
 [Top](#top)
 

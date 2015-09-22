@@ -6,6 +6,8 @@
   
 
 ## Introduction
+This project is part of [FIWARE](http://www.fiware.org). Check also the [FIWARE Catalogue entry for Docker](http://catalogue.fiware.org/enablers/Docker).
+
 This installation guide will explain how you can easily setup your Docker environment to develop and deploy your services on the FIWARE Lab.  For more information about how to use docker on fiware please see the [docker on fiware user guide](userguide.md).
 
 FIWARE has developed many features with which you can compose your services;

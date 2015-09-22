@@ -2,6 +2,8 @@
 * [Introduction](#introduction)
 
 ## Introduction
+This project is part of [FIWARE](http://www.fiware.org). Check also the [FIWARE Catalogue entry for Docker](http://catalogue.fiware.org/enablers/Docker).
+
 This user and programming guide will explain how run Docker on the fiware cloud. Since, FIWARE exposes the docker api you can use any docker client to remotely manage docker.  
 
 
