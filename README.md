@@ -35,17 +35,17 @@ For a cloud hosting provider, the following capabilities are provided:
 
 ## Install and Administration
 
-Build and Install documentation for Docker on the FIWARE Cloud can be found at [the corresponding section of the Admin Manual](./doc/manuals/install.md).
+Build and Install documentation for Docker on the FIWARE Cloud can be found at [the installation and administation manual](./doc/manuals/install.md).
 
 [Top](#top)
 
 ## Running
 
-How to run Docker on the FIWARE Cloud can be found at [the corresponding section of the Admin Manual](doc/manuals/admin/running.md).
+How to run Docker on the FIWARE Cloud can be found at [the user guide](doc/manuals/admin/userguide.md).
 
 [Top](#top)
 
 ## API Overview
-The FIWARE cloud exposes the [Docker API](https://fiware-orion.readthedocs.org).
+The FIWARE cloud exposes the [Docker API](https://docs.docker.com/reference/api/docker_remote_api/).
  
 
