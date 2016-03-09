@@ -1,6 +1,6 @@
 # Welcome to Simple Docker Hosting on FIWARE
 
-#<a name="top"></a> simple-docker-hosting on FIWARE cloud
+#<a name="top"></a>
 * [Introduction](#introduction)
 * [Description](#description)
 * [Install and Administration](#install-and-administration)
