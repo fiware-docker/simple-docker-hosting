@@ -1,0 +1,15 @@
+site_name: Fiware-Simple-Docker-Hosting
+site_url: https://simple-docker-hosting-on-fiware-cloud.readthedocs.org
+repo_url: https://github.com/fiware-docker/simple-docker-hosting.git
+site_description: FIWARE Simple Docker Hosting Documentation
+docs_dir: doc/manuals
+site_dir: html
+markdown_extensions: [toc,fenced_code]
+use_directory_urls: false
+theme: readthedocs
+extra_css: ["https://fiware.org/style/fiware_readthedocs.css"]
+pages:
+  - Home: index.md
+  - 'Installation & Administration Manual': install.md
+  - 'User & Programmers Manual': userguide.md
+
