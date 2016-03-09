@@ -1,4 +1,9 @@
 #<a name="top"></a> simple-docker-hosting on FIWARE cloud
+[![License badge](https://img.shields.io/badge/license-APACHE_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Documentation badge](https://img.shields.io/badge/docs-v1.3-brightgreen.svg)](http://simple-docker-hosting.readthedocs.org/en/v1.3)
+[![Support badge]( https://img.shields.io/badge/support-sof-yellowgreen.svg)](http://stackoverflow.com/questions/tagged/fiware-docker)
+
+
 * [Introduction](#introduction)
 * [Description](#description)
 * [Install and Administration](#install-and-administration)
