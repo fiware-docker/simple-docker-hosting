@@ -118,13 +118,15 @@ It tells you the TLS with be used secure the communication between the client an
 
 For instance to create the docker host called docker-host you issue this command:
 ```
->docker-machine create -d openstack 
---openstack-flavor-id="2" 
---openstack-image-name="Ubuntu Server 14.04.1 (x64)" 
---openstack-net-name="node-int-net-01" 
---openstack-floatingip-pool="public-ext-net-01" 
---openstack-sec-groups="docker-machine-sg" docker-host
+$ docker-machine create -d openstack --openstack-flavor-id="2“ \ 
+--openstack-image-name=“base_Ubuntu_14.04” \
+--openstack-net-name="node-int-net-01"  \
+--openstack-floatingip-pool="public-ext-net-01"  \
+--openstack-sec-groups="docker-machine-sg"  \
+--openstack-ssh-user=“ubuntu”  \
+FIWARE-SPAIN2   
 ```
+
 
 When it finishes it says:
 ```
@@ -190,14 +192,16 @@ Next we create the Swarm master using the same docker-machine create command tha
 
 For example:
 ```
->docker-machine create -d openstack 
---openstack-flavor-id="2" 
---openstack-image-name="Ubuntu Server 14.04.1 (x64)" 
---openstack-net-name="node-int-net-01" 
---openstack-floatingip-pool="public-ext-net-01" 
---openstack-sec-groups="docker-machine-sg" docker-host
---swarm --swarm-master 
---swarm-discovery token://$TOKEN Swarm-Master
+>docker-machine create -d openstack \
+--openstack-flavor-id="2" \
+--openstack-image-name="base_Ubuntu_14.4" \
+--openstack-net-name="node-int-net-01" \
+--openstack-floatingip-pool="public-ext-net-01" \
+--openstack-sec-groups="docker-machine-sg" docker-host \
+--openstack-ssh-user=“Ubuntu” \
+--swarm --swarm-master \
+--swarm-discovery token://$TOKEN \
+Swarm-Master
 ```
 
 Creates the docker host "Swarm-Master" which is a swarm master.
