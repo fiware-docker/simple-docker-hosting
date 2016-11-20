@@ -198,7 +198,7 @@ For example:
 --openstack-net-name="node-int-net-01" \
 --openstack-floatingip-pool="public-ext-net-01" \
 --openstack-sec-groups="docker-machine-sg" docker-host \
---openstack-ssh-user=“Ubuntu” \
+--openstack-ssh-user=“ubuntu” \
 --swarm --swarm-master \
 --swarm-discovery token://$TOKEN \
 Swarm-Master
